@@ -19,27 +19,27 @@ Enter the code for admin.py and models.py
 Execute Django admin and create details for 10 books
 
 # PROGRAM
-admin.py
-from django.contrib import admin
-from .models import Movie  # Import your model
+    admin.py
+    from django.contrib import admin
+    from .models import Movie  # Import your model
 
-class MovieAdmin(admin.ModelAdmin):
+    class MovieAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'director', 'release_year', 'genre')  # Customize fields
     list_filter = ('genre', 'release_year')  # Optional: Add filtering options
     search_fields = ('title', 'director')  # Optional: Add a search bar
 
-admin.site.register(Movie, MovieAdmin)  
+    admin.site.register(Movie, MovieAdmin)  
 
-models.py
-from django.db import models
+    models.py
+    from django.db import models
 
-class Movie(models.Model):
-    id = models.AutoField(primary_key=True)  # Primary key
-    title = models.CharField(max_length=255)
-    director = models.CharField(max_length=255)
-    release_year = models.IntegerField()
-    genre = models.CharField(max_length=100)
-    rating = models.FloatField()
+    class Movie(models.Model):
+        id = models.AutoField(primary_key=True)  # Primary key
+        title = models.CharField(max_length=255)
+        director = models.CharField(max_length=255)
+        release_year = models.IntegerField()
+        genre = models.CharField(max_length=100)
+        rating = models.FloatField()
 
     def __str__(self):
         return self.title
